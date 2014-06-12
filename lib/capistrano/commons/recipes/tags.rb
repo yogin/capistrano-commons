@@ -1,5 +1,28 @@
 Capistrano::Configuration.instance(:must_exist).load do
 
+  class Array
+    def count_by(&block)
+      groups = self.group_by(&block)
+      groups.each { |key, group| groups[key] = group.size }
+    end
+
+    def counts
+      count_by { |o| o }
+    end
+  end
+
+  def github_commit_link(sha)
+    "https://github.com/#{fetch(:github_project)}/commit/#{sha}"
+  end
+
+  def github_pullrequest_link(pr)
+    "https://github.com/#{fetch(:github_project)}/pull/#{pr}"
+  end
+
+  def github_compare_link(a, b)
+    "https://github.com/#{fetch(:github_project)}/compare/#{a}...#{b}"
+  end
+
   namespace :deploy do
 
     desc "Tag the release"
