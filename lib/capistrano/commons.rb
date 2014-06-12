@@ -1,0 +1,7 @@
+require 'capistrano'
+require 'capistrano/cli'
+require 'capistrano/commons/version'
+require 'capistrano/commons/recipes/branch'
+require 'capistrano/commons/recipes/tmux'
+require 'capistrano/commons/recipes/locks'
+require 'capistrano/commons/recipes/tags'
